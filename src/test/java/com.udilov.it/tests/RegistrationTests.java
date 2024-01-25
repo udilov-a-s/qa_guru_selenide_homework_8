@@ -2,67 +2,59 @@ package com.udilov.it.tests;
 
 import org.junit.jupiter.api.Test;
 import com.udilov.it.pages.RegistrationPage;
+import com.udilov.it.testdata.TestDataForRegistrationTests;
 
 public class RegistrationTests extends TestBase {
 
-    String firstName = "Alex";
-    String lastName = "Udilov";
-    String email = "example@examplemail.com";
-    String gender = "Male";
-    String mobileNumber = "9987654321";
-    String day = "11";
-    String month = "February";
-    String year = "2020";
-    String subjects = "Biology";
-    String hobbies = "Sports";
-    String picture = "picture.jpg";
-    String currentAddress = "world";
-    String state = "NCR";
-    String city = "Delhi";
-
     RegistrationPage registrationPage = new RegistrationPage();
+    TestDataForRegistrationTests testDataForRegistrationTests = new TestDataForRegistrationTests();
 
     @Test
     void fullRegistrationTest() {
 
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setGender(gender)
-                .setUserNumber(mobileNumber)
-                .setDateOfBirth(day, month, year)
-                .setSubjects(subjects)
-                .setHobbies(hobbies)
-                .setPicture(picture)
-                .setAddress(currentAddress)
-                .setState(state)
-                .setCity(city)
+                .setFirstName(testDataForRegistrationTests.firstName)
+                .setLastName(testDataForRegistrationTests.lastName)
+                .setEmail(testDataForRegistrationTests.email)
+                .setGender(testDataForRegistrationTests.gender)
+                .setUserNumber(testDataForRegistrationTests.mobileNumber)
+                .setDateOfBirth(testDataForRegistrationTests.birthDay, testDataForRegistrationTests.birthMonth,
+                        testDataForRegistrationTests.birthYear)
+                .setSubjects(testDataForRegistrationTests.subjects)
+                .setHobbies(testDataForRegistrationTests.hobbies)
+                .setPicture(testDataForRegistrationTests.picture)
+                .setAddress(testDataForRegistrationTests.currentAddress)
+                .setState(testDataForRegistrationTests.state)
+                .setCity(testDataForRegistrationTests.city)
                 .submitForm()
-                .checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", email)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", mobileNumber)
-                .checkResult("Date of Birth", day + " " + month + "," + year)
-                .checkResult("Subjects", subjects)
-                .checkResult("Hobbies", hobbies)
-                .checkResult("Picture", picture)
-                .checkResult("Address", currentAddress)
-                .checkResult("State and City", state + " " + city);
+                .checkResult("Student Name", testDataForRegistrationTests.firstName + " "
+                        + testDataForRegistrationTests.lastName)
+                .checkResult("Student Email", testDataForRegistrationTests.email)
+                .checkResult("Gender", testDataForRegistrationTests.gender)
+                .checkResult("Mobile", testDataForRegistrationTests.mobileNumber)
+                .checkResult("Date of Birth", testDataForRegistrationTests.birthDay + " "
+                        + testDataForRegistrationTests.birthMonth + "," + testDataForRegistrationTests.birthYear)
+                .checkResult("Subjects", testDataForRegistrationTests.subjects)
+                .checkResult("Hobbies", testDataForRegistrationTests.hobbies)
+                .checkResult("Picture", testDataForRegistrationTests.picture)
+                .checkResult("Address", testDataForRegistrationTests.currentAddress)
+                .checkResult("State and City", testDataForRegistrationTests.state + " "
+                        + testDataForRegistrationTests.city);
     }
 
     @Test
     void minimalRegistrationTest() {
 
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setUserNumber(mobileNumber)
+                .setFirstName(testDataForRegistrationTests.firstName)
+                .setLastName(testDataForRegistrationTests.lastName)
+                .setGender(testDataForRegistrationTests.gender)
+                .setUserNumber(testDataForRegistrationTests.mobileNumber)
                 .submitForm()
-                .checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", mobileNumber);
+                .checkResult("Student Name", testDataForRegistrationTests.firstName + " "
+                        + testDataForRegistrationTests.lastName)
+                .checkResult("Gender", testDataForRegistrationTests.gender)
+                .checkResult("Mobile", testDataForRegistrationTests.mobileNumber);
     }
 
     @Test

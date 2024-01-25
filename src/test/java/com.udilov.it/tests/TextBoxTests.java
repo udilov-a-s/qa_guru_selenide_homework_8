@@ -2,28 +2,25 @@ package com.udilov.it.tests;
 
 import org.junit.jupiter.api.Test;
 import com.udilov.it.pages.TextBoxPage;
+import com.udilov.it.testdata.TestDataForTextBoxTests;
 
 public class TextBoxTests extends TestBase {
 
-    String name = "Alex Udilov";
-    String email = "example@examplemail.com";
-    String currentAddress = "Titova 1";
-    String permanentAddress = "Marksa 2";
-
     TextBoxPage textBoxPage = new TextBoxPage();
+    TestDataForTextBoxTests testDataForTextBoxTests = new TestDataForTextBoxTests();
 
     @Test
     void fillTextBoxTest() {
 
         textBoxPage.openPage()
-                .setFullNameInput(name)
-                .setEmailInput(email)
-                .setCurrentAddressInput(currentAddress)
-                .setPermanentAddressInput(permanentAddress)
+                .setFullNameInput(testDataForTextBoxTests.name)
+                .setEmailInput(testDataForTextBoxTests.email)
+                .setCurrentAddressInput(testDataForTextBoxTests.currentAddress)
+                .setPermanentAddressInput(testDataForTextBoxTests.permanentAddress)
                 .submitTextBox()
-                .checkResult("name", name)
-                .checkResult("email", email)
-                .checkResult("currentAddress", currentAddress)
-                .checkResult("permanentAddress", permanentAddress);
+                .checkResult("name", testDataForTextBoxTests.name)
+                .checkResult("email", testDataForTextBoxTests.email)
+                .checkResult("currentAddress", testDataForTextBoxTests.currentAddress)
+                .checkResult("permanentAddress", testDataForTextBoxTests.permanentAddress);
     }
 }

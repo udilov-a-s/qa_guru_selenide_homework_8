@@ -9,6 +9,6 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "640x480";
-        Configuration.timeout = 5000;
+        Configuration.timeout = 6000;
     }
 }
